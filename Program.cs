@@ -7,25 +7,27 @@ namespace project1
     class Program
     {
         //public static char ground=Convert.ToChar(176);
-        public static int SCR_HEIGHT = 50;
-        public static int SCR_WIDTH = 50;
-        public static player player1 = new player();
-        public static player enemy1 = new player();
+        public static int SCR_HEIGHT = 25;
+        public static int SCR_WIDTH = 25;
+        public static Entity player1 = new Entity("p");
+        public static Entity enemy1 = new Entity("p");
         public static List<char> PassableObjects = new List<char>();
         public static StringBuilder screen = new StringBuilder(SCR_HEIGHT*SCR_WIDTH);
         public static char [,] screen2d = new char[SCR_WIDTH,SCR_HEIGHT];
+        public static GameObject human = new GameObject("h", "human");
 
         static void Main(string[] args)
         {
             player1.setposition(10,10);
-            enemy1.setposition(30,30);
+            enemy1.setposition(5,5);
             PassableObjects.Add('#');
             PassableObjects.Add('e');
             PassableObjects.Add('h');
             PassableObjects.Add('z');
+            PassableObjects.Add('p');
+            
             while(true)
-            {
-                
+            {          
                 if(Console.KeyAvailable)
                 input();
                 update();
@@ -64,7 +66,7 @@ namespace project1
         }
         public static void update()
         {
-            enemy1.Move(1,0);
+            enemy1.MoveTowardsObject(human);
         }
         public static void clear()
         {
@@ -90,7 +92,6 @@ namespace project1
                     screen.Append(screen2d[i,j]);
                 }
             }
-            Console.ResetColor();
             Console.Write(screen);
             
         }
