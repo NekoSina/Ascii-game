@@ -1,8 +1,12 @@
 namespace project1
 {
-    public class player : GameObject
+    public class Player : GameObject
         {
-            
+            public Player()
+            {
+               characters = "p";
+               type = "player"; 
+            }
             int xdirection = 1;
             public void Move(int xstep, int ystep)
             {

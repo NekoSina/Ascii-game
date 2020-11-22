@@ -9,8 +9,8 @@ namespace project1
         //public static char ground=Convert.ToChar(176);
         public static int SCR_HEIGHT = 25;
         public static int SCR_WIDTH = 25;
-        public static Entity player1 = new Entity("p");
-        public static Entity enemy1 = new Entity("p");
+        public static Player player1 = new Player();
+        public static Player enemy1 = new Player();
         public static List<char> PassableObjects = new List<char>();
         public static StringBuilder screen = new StringBuilder(SCR_HEIGHT*SCR_WIDTH);
         public static char [,] screen2d = new char[SCR_WIDTH,SCR_HEIGHT];
