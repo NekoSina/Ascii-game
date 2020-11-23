@@ -1,4 +1,4 @@
-namespace project1
+namespace AsciiGame
 {
     public class Resource
     {
