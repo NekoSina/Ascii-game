@@ -1,13 +1,12 @@
-namespace project1
+namespace AsciiGame.Entities
 {
     public class Zombie : GameObject
     {
         public Zombie(int _x, int _y)
         {
-            x = _x;
-            y = _y;
-            character = 'Z';
-            type = "Zombie";
+            X = _x;
+            Y = _y;
+            Character = 'Z';
         }
         public enum AI_state
         {

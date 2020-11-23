@@ -1,4 +1,4 @@
-namespace project1
+namespace AsciiGame.Entities
 {
     public class Human : GameObject
     {
@@ -6,8 +6,7 @@ namespace project1
         Resource inventory = new Resource();
         public Human()
         {
-            character = 'H';
-            type = "Human";
+            Character = 'H';
             inventory.wood = 5;
             inventory.stone = 5;
         }

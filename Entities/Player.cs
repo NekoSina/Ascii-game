@@ -1,12 +1,11 @@
-namespace project1
+namespace AsciiGame.Entities
 {
     public class Player : GameObject
     {
         
         public Player()
         {
-            character = 'P';
-            type = "Player";
+            Character = 'P';
         }
-    }
+    }    
 }
