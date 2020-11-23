@@ -16,8 +16,8 @@ namespace AsciiGame
         { 
             Rng = new Random();
 
-            CurrentMap = new Map(25,25);
-            CurrentMap.CreateRoom(0, 0, CurrentMap.Height - 1, CurrentMap.Width);
+            CurrentMap = new Map(50,25);
+            CurrentMap.CreateRoom(0, 0, CurrentMap.Width - 1, CurrentMap.Height-1);
             CurrentMap.LoadCollisions();
             Screen = new StringBuilder(CurrentMap.Width * CurrentMap.Height);
 
@@ -28,19 +28,19 @@ namespace AsciiGame
 
             for (int i = 0; i < 3; i++)
             {
-                var zombieX = Rng.Next(1, CurrentMap.Height - 2);
-                var zombieY = Rng.Next(1, CurrentMap.Width- 2);
+                var zombieX = Rng.Next(1, CurrentMap.Width - 2);
+                var zombieY = Rng.Next(1, CurrentMap.Height- 2);
                 var zombie = new Zombie(zombieX,zombieY);
                 CurrentMap.AddEnttiy(zombie);
             }
             
-            var campX = Rng.Next(1, CurrentMap.Height - 2);
-            var campY = Rng.Next(1, CurrentMap.Width- 2);
+            var campX = Rng.Next(1, CurrentMap.Width - 2);
+            var campY = Rng.Next(1, CurrentMap.Height- 2);
             var camp = new Camp(campX,campY);
             CurrentMap.AddEnttiy(camp);
 
-            var sometreeX = Rng.Next(1, CurrentMap.Height - 2);
-            var sometreeY = Rng.Next(1, CurrentMap.Width- 2);
+            var sometreeX = Rng.Next(1, CurrentMap.Width - 2);
+            var sometreeY = Rng.Next(1, CurrentMap.Height- 2);
             var sometree = new Tree(sometreeX,sometreeY);
             CurrentMap.AddEnttiy(sometree);
 
@@ -96,9 +96,9 @@ namespace AsciiGame
                 CurrentMap.Grid[gameObject.X, gameObject.Y] = gameObject.Character;
             }
             
-            for (int y = 0; y < CurrentMap.Width; y++)
+            for (int y = 0; y < CurrentMap.Height-1; y++)
             {
-                for (int x = 0; x < CurrentMap.Height; x++)
+                for (int x = 0; x < CurrentMap.Width-1; x++)
                     Screen.Append(CurrentMap.Grid[x, y]);
 
                 Screen.AppendLine();
