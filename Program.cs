@@ -81,8 +81,9 @@ namespace AsciiGame
         {
             foreach (var kvp in CurrentMap.Objects)
             {
-                if (kvp.Value is Zombie)
-                    kvp.Value.MoveTowardsObject(Player);
+                var door = CurrentMap.Objects[0];
+                //if (kvp.Value is Zombie)
+                    //kvp.Value.MoveTowardsObject(Player);
             }
         }
         private static void Draw()
