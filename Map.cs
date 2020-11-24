@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using AsciiGame.Entities;
 
@@ -5,8 +6,8 @@ namespace AsciiGame
 {
     public class Map
     {
-        public int Width = 25;
-        public int Height = 25;
+        public int Width;
+        public int Height;
         public char[,] Grid;
         public Dictionary<int, GameObject> Objects = new Dictionary<int, GameObject>();
         public static List<char> PassableObjects = new List<char>();
@@ -19,6 +20,11 @@ namespace AsciiGame
         }
         public void CreateRoom(int xStart, int yStart, int xEnd, int yEnd)
         {
+            xEnd = Math.Min(xEnd, Width - 1);
+            yEnd = Math.Min(yEnd, Height - 1);
+            xStart = Math.Max(xStart, 0);
+            yStart = Math.Min(yStart, 0);
+            
             var ds = Program.Rng.Next(0, 3); // Side to place the door at
             var doorX = 0;
             var doorY = 0;
