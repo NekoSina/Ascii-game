@@ -26,17 +26,20 @@ namespace AsciiGame.Entities
         {
             var deltaX = 0;
             var deltaY = 0;
-
-            if (obj.X > X)
-                deltaX++;
-            else
-                deltaX--;
-
-            if (obj.Y > Y)
-                deltaY++;
-            else
-                deltaY--;
-
+            if (obj.X != X)
+            {
+                if (obj.X > X)
+                    deltaX ++;
+                else
+                    deltaX --;
+            }
+            if (obj.Y != Y)
+            {
+                if (obj.Y > Y)
+                    deltaY ++;
+                else
+                    deltaY --;
+            }
             Move(deltaX,deltaY);
         }
     }
