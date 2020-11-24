@@ -19,8 +19,7 @@ namespace AsciiGame
         }
         public void CreateRoom(int xStart, int yStart, int xEnd, int yEnd)
         {
-            //var ds = Program.Rng.Next(0, 3); // Side to place the door at
-            var ds = 3;
+            var ds = Program.Rng.Next(0, 3); // Side to place the door at
             var doorX = 0;
             var doorY = 0;
             switch (ds)
@@ -45,7 +44,6 @@ namespace AsciiGame
             var door = new Door();
             door.X = doorX;
             door.Y = doorY;
-            var id = door.Id;
             Objects.Add(door.Id, door);
 
             for (int y = yStart; y < yEnd; y++)
