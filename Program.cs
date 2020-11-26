@@ -3,6 +3,8 @@ using System.Text;
 using System.Threading;
 using AsciiGame.Entities;
 
+
+
 namespace AsciiGame
 {
     class Program
@@ -82,7 +84,10 @@ namespace AsciiGame
             foreach (var kvp in CurrentMap.Objects)
             {
                 if (kvp.Value is Zombie)
-                    kvp.Value.MoveTowardsObject(Player);
+                {
+                    var Zombie = (Zombie)kvp.Value;
+                    Zombie.ZombieAI();
+                }
             }
         }
         private static void Draw()
