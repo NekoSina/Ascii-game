@@ -15,6 +15,7 @@ namespace AsciiGame.Entities
         {
             Id = Program.CurrentMap.Objects.Count;
             Inventory = new Inventory();
+            Brain = new NullBrain(this);
         }
         public virtual void Update()
         {

@@ -54,12 +54,15 @@ namespace AsciiGame
                 Update();
                 Draw();
 
-                Thread.Sleep(50);
+                Thread.Sleep(10);
             }
         }
         public static void Input()
         {
             ConsoleKey input = Console.ReadKey().Key;
+            while(Console.KeyAvailable)
+                input = Console.ReadKey().Key;
+
             switch (input)
             {
                 case ConsoleKey.D:
