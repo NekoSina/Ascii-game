@@ -1,3 +1,5 @@
+using AsciiGame.AI;
+
 namespace AsciiGame.Entities
 {
     public class GameObject
@@ -6,6 +8,7 @@ namespace AsciiGame.Entities
         public char Character;
         public int X = 0;
         public int Y = 0;
+        public Brain Brain;
         public Inventory Inventory;
 
         public GameObject()
@@ -13,7 +16,10 @@ namespace AsciiGame.Entities
             Id = Program.CurrentMap.Objects.Count;
             Inventory = new Inventory();
         }
-
+        public virtual void Update()
+        {
+            Brain.Update();
+        }
         public void Move(int xstep, int ystep)
         {
             if (!Program.CurrentMap.IsAccessible(X + xstep, Y + ystep))
