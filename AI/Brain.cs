@@ -19,4 +19,9 @@ namespace AsciiGame.AI
             
         }        
     }
+    public class NullBrain : Brain
+    {
+        public NullBrain(GameObject owner) : base(owner) { }
+        public override void Update(){}
+    }
 }
