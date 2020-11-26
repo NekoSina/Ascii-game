@@ -59,23 +59,27 @@ namespace AsciiGame.Entities
                 {
                     _target = item.Value;
                     _state = AI_state.Moving;
+                    break;
                 }
             }
         }
         private void ZombieMoving()
         {
-            var DeltaTime = DateTime.Now.Second - _then.Second;
-            if(DeltaTime == 1)
+            var DeltaTime = DateTime.Now - _then;
+            if(DeltaTime.Seconds == 1)
             {
                 MoveTowardsObject(_target);
                 _then = DateTime.Now;
-
             }
-            
         }
         private void ZombieInteracting(GameObject obj)
         {
 
+        }
+        public override void Update()
+        {
+            ZombieAI();
+            base.Update();
         }
     }
 }

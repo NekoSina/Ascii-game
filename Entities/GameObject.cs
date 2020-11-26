@@ -42,5 +42,9 @@ namespace AsciiGame.Entities
             }
             Move(deltaX,deltaY);
         }
+        public virtual void Update()
+        {
+            
+        }
     }
 }

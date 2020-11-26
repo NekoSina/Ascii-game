@@ -83,11 +83,8 @@ namespace AsciiGame
         {
             foreach (var kvp in CurrentMap.Objects)
             {
-                if (kvp.Value is Zombie)
-                {
-                    var Zombie = (Zombie)kvp.Value;
-                    Zombie.ZombieAI();
-                }
+            
+                kvp.Value.Update();
             }
         }
         private static void Draw()
