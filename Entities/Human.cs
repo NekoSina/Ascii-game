@@ -1,14 +1,24 @@
+using AsciiGame.AI;
 namespace AsciiGame.Entities
 {
     public class Human : GameObject
     {
         public string Name;
+        public Camp MyCamp;
         Resource inventory = new Resource();
-        public Human()
+        public Human(int _x, int _y, Camp camp)
         {
+            MyCamp = camp;
+            Brain = new HumanBrain(this);
+            X = _x;
+            Y = _y;
             Character = 'H';
-            inventory.wood = 5;
-            inventory.stone = 5;
+
+        }
+        public override void Update()
+        {
+            Brain.Update();
+            base.Update();
         }
     }
 }

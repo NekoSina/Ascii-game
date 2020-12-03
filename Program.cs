@@ -41,6 +41,14 @@ namespace AsciiGame
             var camp = new Camp(campX,campY);
             CurrentMap.AddEnttiy(camp);
 
+            for (int i = 0; i < 2; i++)
+            {
+                var humanX = Rng.Next(1, CurrentMap.Width - 2);
+                var humanY = Rng.Next(1, CurrentMap.Height- 2);
+                var Human = new Human(humanX,humanY, camp);
+                CurrentMap.AddEnttiy(Human);
+            }
+
             var sometreeX = Rng.Next(1, CurrentMap.Width - 2);
             var sometreeY = Rng.Next(1, CurrentMap.Height- 2);
             var sometree = new Tree(sometreeX,sometreeY);
@@ -54,12 +62,15 @@ namespace AsciiGame
                 Update();
                 Draw();
 
-                Thread.Sleep(50);
+                Thread.Sleep(20);
             }
         }
         public static void Input()
         {
             ConsoleKey input = Console.ReadKey().Key;
+            while(Console.KeyAvailable)
+                input = Console.ReadKey().Key;
+
             switch (input)
             {
                 case ConsoleKey.D:
@@ -72,20 +83,16 @@ namespace AsciiGame
                     Player.Move(0, -1);
                     break;
                 case ConsoleKey.S:
-                    Player.Move(0, +1);
+                    Player.Move(0, 1);
                     break;
                 default:
                     break;
             }
         }
-
         private static void Update()
         {
             foreach (var kvp in CurrentMap.Objects)
-            {
-            
                 kvp.Value.Update();
-            }
         }
         private static void Draw()
         {
