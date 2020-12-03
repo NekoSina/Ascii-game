@@ -3,8 +3,6 @@ using System.Text;
 using System.Threading;
 using AsciiGame.Entities;
 
-
-
 namespace AsciiGame
 {
     class Program
@@ -41,10 +39,20 @@ namespace AsciiGame
             var camp = new Camp(campX,campY);
             CurrentMap.AddEnttiy(camp);
 
-            var sometreeX = Rng.Next(1, CurrentMap.Width - 2);
-            var sometreeY = Rng.Next(1, CurrentMap.Height- 2);
-            var sometree = new Tree(sometreeX,sometreeY);
-            CurrentMap.AddEnttiy(sometree);
+            for (int i = 0; i < 2; i++)
+            {
+                var humanX = Rng.Next(1, CurrentMap.Width - 2);
+                var humanY = Rng.Next(1, CurrentMap.Height- 2);
+                var Human = new Human(humanX,humanY, camp);
+                CurrentMap.AddEnttiy(Human);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                var sometreeX = Rng.Next(1, CurrentMap.Width - 2);
+                var sometreeY = Rng.Next(1, CurrentMap.Height- 2);
+                var sometree = new Tree(sometreeX,sometreeY);
+                CurrentMap.AddEnttiy(sometree);
+            }
 
             while (true)
             {
@@ -54,7 +62,7 @@ namespace AsciiGame
                 Update();
                 Draw();
 
-                Thread.Sleep(10);
+                Thread.Sleep(20);
             }
         }
         public static void Input()
@@ -75,13 +83,12 @@ namespace AsciiGame
                     Player.Move(0, -1);
                     break;
                 case ConsoleKey.S:
-                    Player.Move(0, +1);
+                    Player.Move(0, 1);
                     break;
                 default:
                     break;
             }
         }
-
         private static void Update()
         {
             foreach (var kvp in CurrentMap.Objects)

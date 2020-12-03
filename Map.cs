@@ -23,7 +23,7 @@ namespace AsciiGame
             xEnd = Math.Min(xEnd, Width - 1);
             yEnd = Math.Min(yEnd, Height - 1);
             xStart = Math.Max(xStart, 0);
-            yStart = Math.Min(yStart, 0);
+            yStart = Math.Max(yStart, 0);
             
             var ds = Program.Rng.Next(0, 3); // Side to place the door at
             var doorX = 0;

@@ -6,15 +6,10 @@ namespace AsciiGame.Entities
     {
         public Zombie(int _x, int _y)
         {
-            Brain=new ZombieBrain(this);
+            Brain = new ZombieBrain(this);
             X = _x;
             Y = _y;
             Character = 'Z';
-        }
-        public override void Update()
-        {
-            Brain.Update();
-            base.Update();
         }
     }
 }

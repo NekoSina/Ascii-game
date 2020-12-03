@@ -1,5 +1,5 @@
 using AsciiGame.AI;
-
+using System;
 namespace AsciiGame.Entities
 {
     public class GameObject
@@ -48,6 +48,10 @@ namespace AsciiGame.Entities
                     deltaY --;
             }
             Move(deltaX,deltaY);
+        }
+        public void Despawn()
+        {
+            Program.CurrentMap.Objects.Remove(Id);
         }
     }
 }

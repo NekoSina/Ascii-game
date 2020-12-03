@@ -1,27 +1,39 @@
+using System;
 using System.Collections.Generic;
 
 namespace AsciiGame
 {
     public class Inventory
     {
-        private Dictionary<int, Item> Items;
+        private Dictionary<string, Item> Items;
 
         public Inventory()
         {
-            Items = new Dictionary<int, Item>();
+            Items = new Dictionary<string, Item>();
         }
 
-        public void AddItem(Item item)
+        public void AddItem(string name, int count)
         {
-            Items.Add(item.Id,item);
+            if (Contains(name))
+                Items[name].Quantity += count;
+            else
+                Items.Add(name, new Item(name, count));
         }
-        public void RemoveItem(Item item)
+        public void RemoveItem(string name, int count)
         {
-            Items.Remove(item.Id);
+            var item = Items[name];
+            if (item.Quantity > 1)
+                item.Quantity--;
+            else
+                Items.Remove(name);
         }
-        public bool Contains(Item item)
+        public bool Contains(string name)
         {
-            return Items.ContainsKey(item.Id);
+            return Items.ContainsKey(name);
+        }
+        public Item GetItem(string name)
+        {
+            return Items[name];
         }
     }
 }

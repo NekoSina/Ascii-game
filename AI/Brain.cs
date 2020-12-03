@@ -1,5 +1,3 @@
-
-using System;
 using AsciiGame.Entities;
 
 namespace AsciiGame.AI
@@ -11,7 +9,7 @@ namespace AsciiGame.AI
 
         public Brain(GameObject owner)
         {
-            _owner=owner;
+            _owner = owner;
             State = AI_state.Idle;
         }
         public virtual void Update()

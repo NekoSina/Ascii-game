@@ -6,7 +6,7 @@ namespace AsciiGame.AI
 {
     public class ZombieBrain : Brain
     {
-        public DateTime _then;
+        public DateTime _lastMove;
         public GameObject _target;
         
         public ZombieBrain(GameObject owner):base(owner){}
@@ -50,13 +50,13 @@ namespace AsciiGame.AI
         }
         private void Moving()
         {
-            var DeltaTime = DateTime.Now - _then;
+            var DeltaTime = DateTime.Now - _lastMove;
 
-            if (DeltaTime.Seconds < 1)
+            if (DeltaTime.Seconds < 0.5)
                 return;
 
             _owner.MoveTowardsObject(_target);
-            _then = DateTime.Now;
+            _lastMove = DateTime.Now;
         }
         private void Interacting(GameObject obj)
         {
